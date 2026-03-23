@@ -30,6 +30,17 @@ function RootComponent() {
     <html lang={lang === 'zh-tw' ? 'zh-TW' : lang} suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1BT41T5G4"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N1BT41T5G4');`
+          }}
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
