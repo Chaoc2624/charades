@@ -3,6 +3,9 @@
 # 确保遇到错误时停止执行
 set -e
 
+echo "🗺 生成站点地图 (Sitemap)..."
+npm run sitemap
+
 echo "🚀 开始构建项目..."
 npm run build
 
