@@ -15,6 +15,11 @@ const config = defineConfig({
     tanstackStart(),
     viteReact(),
   ],
+  define: {
+    'process.env.NODE_ENV': '"production"',
+    'process.env.TSS_PRERENDERING': '"false"',
+    'process.env.TSS_SHELL': '"false"',
+  }
 })
 
 export default config
