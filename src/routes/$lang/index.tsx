@@ -76,6 +76,9 @@ function GamePage() {
         <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-soft)' }}>
           {strings.siteDescription}
         </p>
+        <p className="text-xs leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>
+          {strings.aboutDesc}
+        </p>
       </div>
 
       {/* Game Section */}

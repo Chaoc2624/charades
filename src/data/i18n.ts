@@ -54,6 +54,7 @@ export interface UIStrings {
   seconds: string
   gameMode: string
   timeLimit: string
+  aboutDesc: string
 }
 
 const translations: Record<string, UIStrings> = {
@@ -112,6 +113,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Mode',
     timeLimit: 'Time',
+    aboutDesc: 'Charades is the classic party game where teams act out phrases without speaking. Use our free online charades generator to play charades instantly — pick a category, tap generate, and let the charades begin!',
   },
   de: {
     siteTitle: 'Scharade',
@@ -168,6 +170,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Modus',
     timeLimit: 'Zeit',
+    aboutDesc: 'Scharade ist das klassische Partyspiel, bei dem Teams Begriffe pantomimisch darstellen. Nutze unseren kostenlosen Scharade-Generator, um sofort Scharade zu spielen — wähle eine Kategorie und los geht\'s mit Scharade!',
   },
   fr: {
     siteTitle: 'Charades',
@@ -224,6 +227,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Mode',
     timeLimit: 'Temps',
+    aboutDesc: 'Les charades sont le jeu de société classique où les équipes miment sans parler. Utilisez notre générateur de charades gratuit pour jouer aux charades en ligne — choisissez une catégorie et que les charades commencent !',
   },
   es: {
     siteTitle: 'Charadas',
@@ -280,6 +284,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Modo',
     timeLimit: 'Tiempo',
+    aboutDesc: 'Las charadas son el clásico juego de fiesta donde los equipos actúan frases sin hablar. Usa nuestro generador de charadas gratuito para jugar charadas en línea — elige una categoría y ¡que empiecen las charadas!',
   },
   it: {
     siteTitle: 'Sciarada',
@@ -336,6 +341,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Modalità',
     timeLimit: 'Tempo',
+    aboutDesc: 'La sciarada è il classico gioco di società dove le squadre mimano senza parlare. Usa il nostro generatore di sciarada gratuito per giocare a sciarada online — scegli una categoria e che la sciarada abbia inizio!',
   },
   ja: {
     siteTitle: 'ジェスチャーゲーム',
@@ -392,6 +398,7 @@ const translations: Record<string, UIStrings> = {
     seconds: '秒',
     gameMode: 'モード',
     timeLimit: '時間',
+    aboutDesc: 'ジェスチャーゲームは、チームがフレーズを声を出さずに演じるクラシックなパーティーゲームです。無料のジェスチャーゲーム・ジェネレーターで今すぐ遊ぼう — カテゴリーを選んでジェスチャーゲーム開始！',
   },
   ko: {
     siteTitle: '제스처 게임',
@@ -448,6 +455,7 @@ const translations: Record<string, UIStrings> = {
     seconds: '초',
     gameMode: '모드',
     timeLimit: '시간',
+    aboutDesc: '제스처 게임은 팀이 말하지 않고 문구를 연기하는 클래식 파티 게임입니다. 무료 제스처 게임 생성기로 지금 바로 제스처 게임을 즐기세요 — 카테고리를 선택하고 제스처 게임 시작!',
   },
   'zh-tw': {
     siteTitle: '比手畫腳',
@@ -504,6 +512,7 @@ const translations: Record<string, UIStrings> = {
     seconds: '秒',
     gameMode: '模式',
     timeLimit: '時間',
+    aboutDesc: '比手畫腳是經典的派對遊戲，隊伍輪流用動作表演詞語。使用我們的免費比手畫腳產生器，立即開始比手畫腳 — 選擇分類，開始比手畫腳吧！',
   },
 }
 
