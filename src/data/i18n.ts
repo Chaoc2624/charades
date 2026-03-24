@@ -47,6 +47,13 @@ export interface UIStrings {
   gesturesGuide: string
   wordCount: string
   generate: string
+  classicMode: string
+  timedMode: string
+  timeUp: string
+  finalScore: string
+  seconds: string
+  gameMode: string
+  timeLimit: string
 }
 
 const translations: Record<string, UIStrings> = {
@@ -98,6 +105,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: 'Common Charades Gestures',
     wordCount: 'Words',
     generate: 'Generate',
+    classicMode: 'Classic',
+    timedMode: 'Timed',
+    timeUp: "Time's Up!",
+    finalScore: 'Final Score',
+    seconds: 's',
+    gameMode: 'Mode',
+    timeLimit: 'Time',
   },
   de: {
     siteTitle: 'Scharade',
@@ -147,6 +161,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: 'Übliche Scharade-Gesten',
     wordCount: 'Wörter',
     generate: 'Generieren',
+    classicMode: 'Klassisch',
+    timedMode: 'Zeitlimit',
+    timeUp: 'Zeit abgelaufen!',
+    finalScore: 'Endpunktzahl',
+    seconds: 's',
+    gameMode: 'Modus',
+    timeLimit: 'Zeit',
   },
   fr: {
     siteTitle: 'Charades',
@@ -196,6 +217,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: 'Gestes courants des charades',
     wordCount: 'Mots',
     generate: 'Générer',
+    classicMode: 'Classique',
+    timedMode: 'Chrono',
+    timeUp: 'Temps écoulé !',
+    finalScore: 'Score final',
+    seconds: 's',
+    gameMode: 'Mode',
+    timeLimit: 'Temps',
   },
   es: {
     siteTitle: 'Charadas',
@@ -245,6 +273,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: 'Gestos comunes de charadas',
     wordCount: 'Palabras',
     generate: 'Generar',
+    classicMode: 'Clásico',
+    timedMode: 'Contrarreloj',
+    timeUp: '¡Se acabó el tiempo!',
+    finalScore: 'Puntuación final',
+    seconds: 's',
+    gameMode: 'Modo',
+    timeLimit: 'Tiempo',
   },
   it: {
     siteTitle: 'Sciarada',
@@ -294,6 +329,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: 'Gesti comuni della sciarada',
     wordCount: 'Parole',
     generate: 'Genera',
+    classicMode: 'Classico',
+    timedMode: 'A tempo',
+    timeUp: 'Tempo scaduto!',
+    finalScore: 'Punteggio finale',
+    seconds: 's',
+    gameMode: 'Modalità',
+    timeLimit: 'Tempo',
   },
   ja: {
     siteTitle: 'ジェスチャーゲーム',
@@ -343,6 +385,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: '定番ジェスチャー',
     wordCount: '単語数',
     generate: '生成',
+    classicMode: 'クラシック',
+    timedMode: 'タイマー',
+    timeUp: '時間切れ！',
+    finalScore: '最終スコア',
+    seconds: '秒',
+    gameMode: 'モード',
+    timeLimit: '時間',
   },
   ko: {
     siteTitle: '제스처 게임',
@@ -392,6 +441,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: '자주 쓰는 제스처',
     wordCount: '단어',
     generate: '생성',
+    classicMode: '클래식',
+    timedMode: '타이머',
+    timeUp: '시간 종료!',
+    finalScore: '최종 점수',
+    seconds: '초',
+    gameMode: '모드',
+    timeLimit: '시간',
   },
   'zh-tw': {
     siteTitle: '比手畫腳',
@@ -441,6 +497,13 @@ const translations: Record<string, UIStrings> = {
     gesturesGuide: '常用手勢指南',
     wordCount: '詞數',
     generate: '生成',
+    classicMode: '經典',
+    timedMode: '計時',
+    timeUp: '時間到！',
+    finalScore: '最終分數',
+    seconds: '秒',
+    gameMode: '模式',
+    timeLimit: '時間',
   },
 }
 
