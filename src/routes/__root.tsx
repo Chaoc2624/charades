@@ -8,14 +8,14 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Charades Word Generator — Free Online Charades Game' },
-      { name: 'description', content: 'Play charades online with 500+ words across 11 categories. Generate random words for kids, adults, or all ages. Free word guessing game in 8 languages.' },
+      { name: 'description', content: 'Play charades online with 500+ random words across 11 categories. Generate random words for kids, adults, or all ages. Play charades free in 3 languages!' },
       { property: 'og:type', content: 'website' },
       { property: 'og:site_name', content: 'Charades' },
       { name: 'twitter:card', content: 'summary' },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🎭</text></svg>' },
+      { rel: 'icon', href: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%235B6E72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3C3.5 3 2 5 2 8c0 3.5 2 6 5.5 6S12 11.5 12 8c0-3-1.5-5-3.5-5h-3z"/><path d="M6 8.5c0 .3.2.5.5.5s.5-.2.5-.5-.2-.5-.5-.5-.5.2-.5.5z"/><path d="M8.5 8.5c0 .3.2.5.5.5s.5-.2.5-.5-.2-.5-.5-.5-.5.2-.5.5z"/><path d="M5.5 10.5s.5 1 2 1 2-1 2-1"/><path d="M18.5 3c2 0 3.5 2 3.5 5 0 3.5-2 6-5.5 6S12 11.5 12 8c0-3 1.5-5 3.5-5h3z"/><path d="M15 8.5c0 .3.2.5.5.5s.5-.2.5-.5-.2-.5-.5-.5-.5.2-.5.5z"/><path d="M17.5 8.5c0 .3.2.5.5.5s.5-.2.5-.5-.2-.5-.5-.5-.5.2-.5.5z"/><path d="M15 11s.5-1 2-1 2 1 2 1"/><path d="M7 14c-1 2.5-1 5 1.5 6.5"/><path d="M17 14c1 2.5 1 5-1.5 6.5"/></svg>' },
       // hreflang tags are set by leaf routes to avoid duplication
     ],
   }),

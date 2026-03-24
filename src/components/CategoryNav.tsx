@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link, useParams } from '@tanstack/react-router'
 import { t } from '../data/i18n'
 import { ALL_CATEGORIES, ALL_AUDIENCES, type Category, type Audience } from '../data/words'
@@ -31,10 +32,22 @@ export default function CategoryNav({ activeCategory, activeAudience }: Category
     adults: strings.adults,
   }
 
-  const audienceEmojis: Record<string, string> = {
-    'all-ages': '🌟',
-    kids: '🧒',
-    adults: '👤',
+  const audienceIcons: Record<string, React.ReactNode> = {
+    'all-ages': (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+    kids: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" /><path d="M8 14s1.5 2 4 2 4-2 4-2" /><line x1="9" y1="9" x2="9.01" y2="9" /><line x1="15" y1="9" x2="15.01" y2="9" />
+      </svg>
+    ),
+    adults: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+      </svg>
+    ),
   }
 
   return (
@@ -88,7 +101,7 @@ export default function CategoryNav({ activeCategory, activeAudience }: Category
               activeProps={{ className: `nav-pill ${activeAudience === aud || (!activeAudience && aud === 'all-ages') ? 'active' : ''}` }}
               inactiveProps={{ className: `nav-pill ${activeAudience === aud || (!activeAudience && aud === 'all-ages') ? 'active' : ''}` }}
             >
-              {audienceEmojis[aud]} {audienceLabels[aud]}
+              {audienceIcons[aud]} {audienceLabels[aud]}
             </Link>
           ))}
         </div>

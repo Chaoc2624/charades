@@ -1,3 +1,4 @@
+import React from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { t } from '../../data/i18n'
 import { SITE_URL } from '../../data/site'
@@ -45,18 +46,24 @@ export const Route = createFileRoute('/$lang/')({
   component: GamePage,
 })
 
-const categoryEmojis: Record<string, string> = {
-  nouns: '📦',
-  verbs: '🏃',
-  adjectives: '✨',
-  animals: '🐾',
-  food: '🍕',
-  occupations: '👩‍⚕️',
-  movies: '🎬',
-  'tv-shows': '📺',
-  celebrities: '⭐',
-  sports: '⚽',
-  places: '🏔️',
+const CategoryIcon = ({ d, size = 20 }: { d: React.ReactNode; size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {d}
+  </svg>
+)
+
+const categoryIcons: Record<string, React.ReactNode> = {
+  nouns: <CategoryIcon d={<><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" /><path d="M3.3 7 12 12l8.7-5" /><line x1="12" y1="22" x2="12" y2="12" /></>} />,
+  verbs: <CategoryIcon d={<><path d="M13 4v16" /><path d="M17 4v16" /><path d="M19 4H9.5a4.5 4.5 0 0 0 0 9H13" /></>} />,
+  adjectives: <CategoryIcon d={<><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z" /></>} />,
+  animals: <CategoryIcon d={<><circle cx="11" cy="4" r="2" /><circle cx="18" cy="8" r="2" /><circle cx="20" cy="16" r="2" /><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.05L6.53 18A2 2 0 0 1 7.5 15H9Z" /><path d="M14.35 15.65a2.5 2.5 0 0 1 3.14-1.42l1.2.4" /></>} />,
+  food: <CategoryIcon d={<><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" /><path d="M7 2v20" /><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" /></>} />,
+  occupations: <CategoryIcon d={<><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /><rect width="20" height="14" x="2" y="6" rx="2" /></>} />,
+  movies: <CategoryIcon d={<><rect width="18" height="18" x="3" y="3" rx="2" /><path d="m7 3 0 18" /><path d="m17 3 0 18" /><path d="M3 7.5h4" /><path d="M17 7.5h4" /><path d="M3 12h18" /><path d="M3 16.5h4" /><path d="M17 16.5h4" /></>} />,
+  'tv-shows': <CategoryIcon d={<><rect width="20" height="15" x="2" y="3" rx="2" /><polyline points="8 21 12 17 16 21" /></>} />,
+  celebrities: <CategoryIcon d={<><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></>} />,
+  sports: <CategoryIcon d={<><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /><path d="M4 22h16" /><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></>} />,
+  places: <CategoryIcon d={<><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></>} />,
 }
 
 function GamePage() {
@@ -104,7 +111,7 @@ function GamePage() {
                 params={{ lang, category: cat }}
                 className="category-card"
               >
-                <span className="text-2xl">{categoryEmojis[cat]}</span>
+                <span className="flex items-center justify-center" style={{ width: '28px', height: '28px' }}>{categoryIcons[cat]}</span>
                 <span className="font-display font-bold text-sm" style={{ color: 'var(--color-primary)' }}>
                   {label}
                 </span>

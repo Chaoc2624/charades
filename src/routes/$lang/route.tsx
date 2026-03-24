@@ -35,14 +35,18 @@ function LangLayout() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="flex items-center justify-between px-4 py-4 md:px-8 relative z-20">
+      <header className="flex items-center justify-between px-4 py-4 md:px-8 sticky top-0 z-20" style={{ background: 'rgba(246, 244, 240, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="flex items-center gap-6">
           <a href={`/${lang}`} className="flex items-center gap-2.5 no-underline">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-              <line x1="9" y1="9" x2="9.01" y2="9" strokeWidth="2.5" />
-              <line x1="15" y1="9" x2="15.01" y2="9" strokeWidth="2.5" />
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M5.5 3C3.5 3 2 5 2 8c0 3.5 2 6 5.5 6S12 11.5 12 8c0-3-1.5-5-3.5-5h-3z" />
+              <circle cx="6.5" cy="8.5" r="0.5" fill="var(--color-primary)" />
+              <circle cx="9" cy="8.5" r="0.5" fill="var(--color-primary)" />
+              <path d="M5.5 10.5s.5 1 2 1 2-1 2-1" />
+              <path d="M18.5 3c2 0 3.5 2 3.5 5 0 3.5-2 6-5.5 6S12 11.5 12 8c0-3 1.5-5 3.5-5h3z" />
+              <circle cx="15.5" cy="8.5" r="0.5" fill="var(--color-primary)" />
+              <circle cx="18" cy="8.5" r="0.5" fill="var(--color-primary)" />
+              <path d="M15 11s.5-1 2-1 2 1 2 1" />
             </svg>
             <span className="font-display text-lg font-bold" style={{ color: 'var(--color-primary)' }}>
               {strings.siteTitle}
@@ -67,7 +71,17 @@ function LangLayout() {
         <div className="max-w-2xl mx-auto flex flex-col md:flex-row gap-8 md:gap-16">
           {/* Brand */}
           <div className="flex flex-col gap-2 flex-1">
-            <span className="font-display text-base font-bold" style={{ color: 'var(--color-primary)' }}>
+            <span className="flex items-center gap-2 font-display text-base font-bold" style={{ color: 'var(--color-primary)' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5.5 3C3.5 3 2 5 2 8c0 3.5 2 6 5.5 6S12 11.5 12 8c0-3-1.5-5-3.5-5h-3z" />
+                <circle cx="6.5" cy="8.5" r="0.5" fill="currentColor" />
+                <circle cx="9" cy="8.5" r="0.5" fill="currentColor" />
+                <path d="M5.5 10.5s.5 1 2 1 2-1 2-1" />
+                <path d="M18.5 3c2 0 3.5 2 3.5 5 0 3.5-2 6-5.5 6S12 11.5 12 8c0-3 1.5-5 3.5-5h3z" />
+                <circle cx="15.5" cy="8.5" r="0.5" fill="currentColor" />
+                <circle cx="18" cy="8.5" r="0.5" fill="currentColor" />
+                <path d="M15 11s.5-1 2-1 2 1 2 1" />
+              </svg>
               {strings.siteTitle}
             </span>
             <p className="text-xs leading-relaxed" style={{ color: 'var(--color-text-muted)' }}>

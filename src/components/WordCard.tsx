@@ -162,7 +162,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
             className={`nav-pill ${gameMode === 'timed' ? 'active' : ''}`}
             style={{ padding: '4px 12px', fontSize: '0.8rem' }}
           >
-            ⏱ {strings.timedMode}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', verticalAlign: '-2px' }}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> {strings.timedMode}
           </button>
         </div>
       </div>
@@ -243,7 +243,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
               style={{ padding: '4px 10px', fontSize: '0.8rem' }}
               title="Custom"
             >
-              {!PRESET_COUNTS.includes(wordCount as any) ? wordCount : '✏️'}
+              {!PRESET_COUNTS.includes(wordCount as any) ? wordCount : <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z" /><path d="m15 5 4 4" /></svg>}
             </button>
           )}
         </div>
@@ -278,7 +278,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
         {gameMode === 'timed' && isTimeUp ? (
           <div key="timeup" className="flex flex-col items-center gap-5 p-8 animate-text-enter">
             <span className="font-display text-2xl font-bold" style={{ color: 'var(--color-skip)' }}>
-              ⏰ {strings.timeUp}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', verticalAlign: '-4px' }}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg> {strings.timeUp}
             </span>
             <div className="flex flex-col items-center gap-1">
               <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>
@@ -293,7 +293,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
               className="btn-action btn-correct"
               style={{ marginTop: '4px' }}
             >
-              🔄 {strings.playAgain}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', verticalAlign: '-2px' }}><polyline points="1 4 1 10 7 10" /><polyline points="23 20 23 14 17 14" /><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15" /></svg> {strings.playAgain}
             </button>
           </div>
         ) : (
@@ -403,7 +403,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
               onClick={startTimer}
               className="btn-action btn-correct flex-1"
             >
-              ▶ {strings.startPlaying}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', verticalAlign: '-2px' }}><polygon points="5 3 19 12 5 21 5 3" /></svg> {strings.startPlaying}
             </button>
           ) : (
             <>
@@ -411,7 +411,7 @@ export default function WordCard({ lang, category, audience }: WordCardProps) {
                 onClick={handleSkip}
                 className="btn-action btn-skip flex-1"
               >
-                {wordCount === 1 ? strings.skip : `🔄 ${strings.generate}`}
+                {wordCount === 1 ? strings.skip : <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline', verticalAlign: '-2px' }}><polyline points="1 4 1 10 7 10" /><polyline points="23 20 23 14 17 14" /><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15" /></svg> {strings.generate}</>}
               </button>
               <button
                 onClick={handleCorrect}
