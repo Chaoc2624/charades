@@ -60,7 +60,7 @@ export interface UIStrings {
 const translations: Record<string, UIStrings> = {
   en: {
     siteTitle: 'Charades',
-    siteDescription: 'Play charades online with our free random word generator. 500+ random words across 11 categories for kids, adults, or all ages. The best English charades word generator for game nights.',
+    siteDescription: 'Play charades online with our free charades word generator — generate random words from 500+ words across 11 categories. Play charades with random words for kids, adults, or all ages. The ultimate random word generator for charades game nights.',
     startPlaying: 'Start Playing',
     nextWord: 'Next',
     gotIt: 'Got It! ✓',
@@ -95,7 +95,7 @@ const translations: Record<string, UIStrings> = {
     recentPosts: 'Recent Posts',
     frequentlyAsked: 'Frequently Asked Questions',
     exploreCategories: 'Explore Categories',
-    wordsAvailable: 'words available',
+    wordsAvailable: 'words',
     backToHome: 'Back to Home',
     publishedOn: 'Published on',
     playNow: 'Play Now',
@@ -113,7 +113,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Mode',
     timeLimit: 'Time',
-    aboutDesc: 'Charades is the classic party game where teams act out phrases without speaking. Our random charades word generator gives you instant access to hundreds of English charades words. Pick a category, generate a random word, and let the charades begin!',
+    aboutDesc: 'Play charades — the classic party game where teams act out phrases without speaking. Use our free word generator to get random words for charades instantly. Pick a category, generate a random word, and play charades with friends tonight!',
   },
   de: {
     siteTitle: 'Scharade',

@@ -7,15 +7,15 @@ const faqData: Record<string, FAQItem[]> = {
   en: [
     {
       question: 'What is charades?',
-      answer: 'Charades is a classic party game where players act out a word or phrase without speaking, while other players try to guess what it is. It\'s a fun, interactive game that has been enjoyed for centuries and works great for all ages.',
+      answer: 'Charades is a classic party game where you play charades by acting out a word or phrase without speaking, while other players try to guess what it is. People play charades at parties, game nights, and family gatherings — it works great for all ages.',
     },
     {
-      question: 'How many players do you need for charades?',
-      answer: 'Charades can be played with as few as 4 players, but it works best with 6 to 12 players. You\'ll want to split into two teams of at least 2 people each. The more players, the more fun and competitive the game becomes!',
+      question: 'How many players do you need to play charades?',
+      answer: 'You can play charades with as few as 4 players, but it works best with 6 to 12. Split into two teams of at least 2 people each. The more players you have to play charades with, the more fun and competitive the game becomes!',
     },
     {
       question: 'What are the basic rules of charades?',
-      answer: 'The basic rules are simple: one player draws a word or phrase, then acts it out silently using only gestures and body movements. No speaking, pointing at objects, or mouthing words is allowed. The other players on their team try to guess the word within a time limit, usually 1-2 minutes.',
+      answer: 'When you play charades, the rules are simple: one player draws a random word or phrase, then acts it out silently using only gestures. No speaking, pointing at objects, or mouthing words is allowed. The other players try to guess the word within a time limit, usually 1-2 minutes.',
     },
     {
       question: 'How do I use this online charades generator?',

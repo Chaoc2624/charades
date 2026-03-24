@@ -12,7 +12,7 @@ const blogData: Record<string, BlogPost[]> = {
     {
       slug: 'how-to-play-charades',
       title: 'How We Play Charades at Our House',
-      excerpt: 'So my family plays charades like every weekend and I thought I\'d share how we do it cos some of my mates didn\'t even know the rules.',
+      excerpt: 'We play charades like every weekend at our house. Here\'s how we play charades with random words and why it\'s the best party game.',
       content: `Right so charades. If you haven't played it before, basically someone acts out a word and everyone else has to guess what it is. Sounds dead simple but trust me it gets proper funny.
 
 ## How it works
@@ -45,7 +45,7 @@ Also animals are the easiest category to start with. Everyone can do a dog or a 
     {
       slug: 'best-party-games-for-groups',
       title: 'Games We Always Play at Parties (Ranked)',
-      excerpt: 'Had a massive party last month and we played loads of games. Here are the ones that actually went well and the ones that were a bit rubbish.',
+      excerpt: 'We ranked the best party games for groups. Spoiler: you should play charades first — grab some random words and get started.',
       content: `So we had my cousin's birthday party last month and there were like 15 of us. We needed games that everyone could play, not just board games for 4 people. Here's what worked and what didn't.
 
 ## 1. Charades (obviously)
