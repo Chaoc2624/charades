@@ -60,7 +60,7 @@ export interface UIStrings {
 const translations: Record<string, UIStrings> = {
   en: {
     siteTitle: 'Charades',
-    siteDescription: 'Play charades online with 500+ words across 11 categories. Generate random words for kids, adults, or all ages. Free word guessing game in 8 languages.',
+    siteDescription: 'Play charades online with our free random word generator. 500+ random words across 11 categories for kids, adults, or all ages. The best English charades word generator for game nights.',
     startPlaying: 'Start Playing',
     nextWord: 'Next',
     gotIt: 'Got It! ✓',
@@ -113,7 +113,7 @@ const translations: Record<string, UIStrings> = {
     seconds: 's',
     gameMode: 'Mode',
     timeLimit: 'Time',
-    aboutDesc: 'Charades is the classic party game where teams act out phrases without speaking. Use our free online charades generator to play charades instantly — pick a category, tap generate, and let the charades begin!',
+    aboutDesc: 'Charades is the classic party game where teams act out phrases without speaking. Our random charades word generator gives you instant access to hundreds of English charades words. Pick a category, generate a random word, and let the charades begin!',
   },
   de: {
     siteTitle: 'Scharade',

@@ -32,7 +32,7 @@ export const Route = createFileRoute('/$lang/')({
             '@type': 'WebSite',
             name: 'Charades',
             url: SITE_URL,
-            description: 'Free online charades word generator with 500+ words across 11 categories.',
+            description: 'Free online random charades word generator with 500+ words across 11 categories for English and 7 other languages.',
             inLanguage: params.lang === 'zh-tw' ? 'zh-TW' : params.lang,
           }),
         },
