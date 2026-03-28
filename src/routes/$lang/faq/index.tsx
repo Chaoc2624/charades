@@ -241,5 +241,5 @@ function FAQAccordion({ question, answer }: { question: string; answer: string }
         </div>
       )}
     </div>
-  )
+  )  
 }
