@@ -9,7 +9,7 @@ interface CategoryNavProps {
 }
 
 export default function CategoryNav({ activeCategory, activeAudience }: CategoryNavProps) {
-  const { lang } = useParams({ strict: false }) as { lang: string }
+  const { lang = 'en' } = useParams({ strict: false }) as { lang?: string }
   const strings = t(lang)
 
   const categoryLabels: Record<string, string> = {
@@ -59,8 +59,8 @@ export default function CategoryNav({ activeCategory, activeAudience }: Category
         </p>
         <div className="flex flex-wrap gap-2">
           <Link
-            to="/$lang"
-            params={{ lang }}
+            to="/{-$lang}"
+            params={{ lang: lang === 'en' ? undefined : lang }}
             className={`nav-pill ${!activeCategory ? 'active' : ''}`}
             activeOptions={{ exact: true }}
             activeProps={{ className: `nav-pill ${!activeCategory ? 'active' : ''}` }}
@@ -71,8 +71,8 @@ export default function CategoryNav({ activeCategory, activeAudience }: Category
           {ALL_CATEGORIES.map((cat) => (
             <Link
               key={cat}
-              to="/$lang/category/$category"
-              params={{ lang, category: cat }}
+              to="/{-$lang}/category/$category"
+              params={{ lang: lang === 'en' ? undefined : lang, category: cat }}
               className={`nav-pill ${activeCategory === cat ? 'active' : ''}`}
               activeOptions={{ exact: true, includeSearch: false }}
               activeProps={{ className: `nav-pill ${activeCategory === cat ? 'active' : ''}` }}
@@ -93,8 +93,8 @@ export default function CategoryNav({ activeCategory, activeAudience }: Category
           {ALL_AUDIENCES.map((aud) => (
             <Link
               key={aud}
-              to={activeCategory ? '/$lang/category/$category' : '/$lang'}
-              params={activeCategory ? { lang, category: activeCategory } : { lang }}
+              to={activeCategory ? '/{-$lang}/category/$category' : '/{-$lang}'}
+              params={activeCategory ? { lang: lang === 'en' ? undefined : lang, category: activeCategory } : { lang: lang === 'en' ? undefined : lang }}
               search={{ audience: aud === 'all-ages' ? undefined : aud }}
               className={`nav-pill ${activeAudience === aud || (!activeAudience && aud === 'all-ages') ? 'active' : ''}`}
               activeOptions={{ exact: true, includeSearch: true }}

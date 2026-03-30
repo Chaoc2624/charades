@@ -9,9 +9,10 @@ import { getBlogPosts } from '../../data/blog'
 import WordCard from '../../components/WordCard'
 import CategoryNav from '../../components/CategoryNav'
 
-export const Route = createFileRoute('/$lang/')({
+export const Route = createFileRoute('/{-$lang}/')({
   head: ({ params }) => {
-    const pageUrl = `${SITE_URL}/${params.lang}/`
+    const defaultLang = params.lang || 'en'
+    const pageUrl = defaultLang === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${defaultLang}/`
     return {
       meta: [
         { property: 'og:url', content: pageUrl },
@@ -21,9 +22,9 @@ export const Route = createFileRoute('/$lang/')({
         ...SUPPORTED_LANGUAGES.map((lang) => ({
           rel: 'alternate',
           hrefLang: lang.hreflang,
-          href: `${SITE_URL}/${lang.code}/`,
+          href: lang.code === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${lang.code}/`,
         })),
-        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/en/` },
+        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/` },
       ],
       scripts: [
         {
@@ -34,13 +35,13 @@ export const Route = createFileRoute('/$lang/')({
             name: 'Charades',
             url: SITE_URL,
             description: 'Free online random charades word generator with 500+ words across 11 categories for English and 7 other languages.',
-            inLanguage: params.lang === 'zh-tw' ? 'zh-TW' : params.lang,
+            inLanguage: defaultLang === 'zh-tw' ? 'zh-TW' : defaultLang,
           }),
         },
       ],
     }
   },
-  validateSearch: (search: Record<string, unknown>) => ({
+  validateSearch: (search: Record<string, unknown>): { audience?: Audience } => ({
     audience: (search.audience as Audience) || undefined,
   }),
   component: GamePage,
@@ -67,7 +68,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 }
 
 function GamePage() {
-  const { lang } = Route.useParams()
+  const { lang = 'en' } = Route.useParams()
   const { audience } = Route.useSearch()
   const strings = t(lang)
   const faqs = getFAQs(lang).slice(0, 3)
@@ -107,8 +108,8 @@ function GamePage() {
             return (
               <Link
                 key={cat}
-                to="/$lang/category/$category"
-                params={{ lang, category: cat }}
+                to="/{-$lang}/category/$category"
+                params={{ lang: lang === 'en' ? undefined : lang, category: cat }}
                 className="category-card"
               >
                 <span className="flex items-center justify-center" style={{ width: '28px', height: '28px' }}>{categoryIcons[cat]}</span>
@@ -131,8 +132,8 @@ function GamePage() {
             {strings.frequentlyAsked}
           </h2>
           <Link
-            to="/$lang/faq"
-            params={{ lang }}
+            to="/{-$lang}/faq"
+            params={{ lang: lang === 'en' ? undefined : lang }}
             className="text-sm font-semibold no-underline"
             style={{ color: 'var(--color-accent)' }}
           >
@@ -160,8 +161,8 @@ function GamePage() {
             {strings.recentPosts}
           </h2>
           <Link
-            to="/$lang/blog"
-            params={{ lang }}
+            to="/{-$lang}/blog"
+            params={{ lang: lang === 'en' ? undefined : lang }}
             className="text-sm font-semibold no-underline"
             style={{ color: 'var(--color-accent)' }}
           >
@@ -172,8 +173,8 @@ function GamePage() {
           {posts.map((post) => (
             <Link
               key={post.slug}
-              to="/$lang/blog/$slug"
-              params={{ lang, slug: post.slug }}
+              to="/{-$lang}/blog/$slug"
+              params={{ lang: lang === 'en' ? undefined : lang, slug: post.slug }}
               className="blog-card"
             >
               <span className="text-xs font-semibold" style={{ color: 'var(--color-text-muted)' }}>

@@ -4,7 +4,8 @@ import { SUPPORTED_LANGUAGES } from '../data/languages'
 import { t } from '../data/i18n'
 
 export default function LanguageSwitcher() {
-  const { lang } = useParams({ strict: false }) as { lang: string }
+  const params = useParams({ strict: false }) as { lang?: string }
+  const lang = params.lang || 'en'
   const strings = t(lang)
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
@@ -37,8 +38,8 @@ export default function LanguageSwitcher() {
           {SUPPORTED_LANGUAGES.map((language) => (
             <Link
               key={language.code}
-              to="/$lang"
-              params={{ lang: language.code }}
+              to="/{-$lang}"
+              params={{ lang: language.code === 'en' ? undefined : language.code }}
               onClick={() => setOpen(false)}
               className={`lang-option ${language.code === lang ? 'active' : ''}`}
             >

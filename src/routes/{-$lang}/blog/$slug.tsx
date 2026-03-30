@@ -5,19 +5,21 @@ import { SITE_URL } from '../../../data/site'
 import { SUPPORTED_LANGUAGES } from '../../../data/languages'
 import Breadcrumb from '../../../components/Breadcrumb'
 
-export const Route = createFileRoute('/$lang/blog/$slug')({
+export const Route = createFileRoute('/{-$lang}/blog/$slug')({
   beforeLoad: ({ params }) => {
-    const post = getBlogPost(params.lang, params.slug)
+    const lang = params.lang || 'en'
+    const post = getBlogPost(lang, params.slug)
     if (!post) {
-      throw redirect({ to: '/$lang/blog', params: { lang: params.lang } })
+      throw redirect({ to: '/{-$lang}/blog', params: { lang: params.lang === 'en' ? undefined : params.lang } })
     }
   },
   head: ({ params }) => {
-    const strings = t(params.lang)
-    const post = getBlogPost(params.lang, params.slug)
+    const defaultLang = params.lang || 'en'
+    const strings = t(defaultLang)
+    const post = getBlogPost(defaultLang, params.slug)
     if (!post) return {}
 
-    const pageUrl = `${SITE_URL}/${params.lang}/blog/${params.slug}/`
+    const pageUrl = defaultLang === 'en' ? `${SITE_URL}/blog/${params.slug}/` : `${SITE_URL}/${defaultLang}/blog/${params.slug}/`
 
     return {
       meta: [
@@ -37,9 +39,10 @@ export const Route = createFileRoute('/$lang/blog/$slug')({
         ...SUPPORTED_LANGUAGES.map((lang) => {
           const langPost = getBlogPost(lang.code, params.slug)
           return langPost
-            ? { rel: 'alternate', hrefLang: lang.hreflang, href: `${SITE_URL}/${lang.code}/blog/${params.slug}/` }
+            ? { rel: 'alternate', hrefLang: lang.hreflang, href: lang.code === 'en' ? `${SITE_URL}/blog/${params.slug}/` : `${SITE_URL}/${lang.code}/blog/${params.slug}/` }
             : null
         }).filter(Boolean) as { rel: string; hrefLang: string; href: string }[],
+        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/blog/${params.slug}/` },
       ],
       scripts: [
         {
@@ -74,13 +77,13 @@ export const Route = createFileRoute('/$lang/blog/$slug')({
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: `${SITE_URL}/${params.lang}/`,
+                item: defaultLang === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${defaultLang}/`,
               },
               {
                 '@type': 'ListItem',
                 position: 2,
                 name: 'Blog',
-                item: `${SITE_URL}/${params.lang}/blog/`,
+                item: defaultLang === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${defaultLang}/blog/`,
               },
               {
                 '@type': 'ListItem',
@@ -98,7 +101,7 @@ export const Route = createFileRoute('/$lang/blog/$slug')({
 })
 
 function BlogPostPage() {
-  const { lang, slug } = Route.useParams()
+  const { lang = 'en', slug } = Route.useParams()
   const strings = t(lang)
   const post = getBlogPost(lang, slug)!
   const allPosts = getBlogPosts(lang)
@@ -156,7 +159,7 @@ function BlogPostPage() {
     <div className="flex flex-col gap-8 w-full max-w-2xl mx-auto animate-float-in">
       <Breadcrumb
         items={[
-          { label: strings.blog, href: `/${lang}/blog` },
+          { label: strings.blog, href: lang === 'en' ? `/blog` : `/${lang}/blog` },
           { label: post.title },
         ]}
       />
@@ -191,8 +194,8 @@ function BlogPostPage() {
             {relatedPosts.map((rp) => (
               <Link
                 key={rp.slug}
-                to="/$lang/blog/$slug"
-                params={{ lang, slug: rp.slug }}
+                to="/{-$lang}/blog/$slug"
+                params={{ lang: lang === 'en' ? undefined : lang, slug: rp.slug }}
                 className="blog-card"
               >
                 <h3 className="font-display text-base font-bold" style={{ color: 'var(--color-primary)' }}>

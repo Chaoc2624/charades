@@ -9,188 +9,174 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as LangRouteRouteImport } from './routes/$lang/route'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as LangIndexRouteImport } from './routes/$lang/index'
-import { Route as LangFaqIndexRouteImport } from './routes/$lang/faq/index'
-import { Route as LangBlogIndexRouteImport } from './routes/$lang/blog/index'
-import { Route as LangCategoryCategoryRouteImport } from './routes/$lang/category/$category'
-import { Route as LangBlogSlugRouteImport } from './routes/$lang/blog/$slug'
+import { Route as Char123LangChar125RouteRouteImport } from './routes/{-$lang}/route'
+import { Route as Char123LangChar125IndexRouteImport } from './routes/{-$lang}/index'
+import { Route as Char123LangChar125FaqIndexRouteImport } from './routes/{-$lang}/faq/index'
+import { Route as Char123LangChar125BlogIndexRouteImport } from './routes/{-$lang}/blog/index'
+import { Route as Char123LangChar125CategoryCategoryRouteImport } from './routes/{-$lang}/category/$category'
+import { Route as Char123LangChar125BlogSlugRouteImport } from './routes/{-$lang}/blog/$slug'
 
-const LangRouteRoute = LangRouteRouteImport.update({
-  id: '/$lang',
-  path: '/$lang',
+const Char123LangChar125RouteRoute = Char123LangChar125RouteRouteImport.update({
+  id: '/{-$lang}',
+  path: '/{-$lang}',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
+const Char123LangChar125IndexRoute = Char123LangChar125IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
+  getParentRoute: () => Char123LangChar125RouteRoute,
 } as any)
-const LangIndexRoute = LangIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => LangRouteRoute,
-} as any)
-const LangFaqIndexRoute = LangFaqIndexRouteImport.update({
-  id: '/faq/',
-  path: '/faq/',
-  getParentRoute: () => LangRouteRoute,
-} as any)
-const LangBlogIndexRoute = LangBlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
-  getParentRoute: () => LangRouteRoute,
-} as any)
-const LangCategoryCategoryRoute = LangCategoryCategoryRouteImport.update({
-  id: '/category/$category',
-  path: '/category/$category',
-  getParentRoute: () => LangRouteRoute,
-} as any)
-const LangBlogSlugRoute = LangBlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
-  getParentRoute: () => LangRouteRoute,
-} as any)
+const Char123LangChar125FaqIndexRoute =
+  Char123LangChar125FaqIndexRouteImport.update({
+    id: '/faq/',
+    path: '/faq/',
+    getParentRoute: () => Char123LangChar125RouteRoute,
+  } as any)
+const Char123LangChar125BlogIndexRoute =
+  Char123LangChar125BlogIndexRouteImport.update({
+    id: '/blog/',
+    path: '/blog/',
+    getParentRoute: () => Char123LangChar125RouteRoute,
+  } as any)
+const Char123LangChar125CategoryCategoryRoute =
+  Char123LangChar125CategoryCategoryRouteImport.update({
+    id: '/category/$category',
+    path: '/category/$category',
+    getParentRoute: () => Char123LangChar125RouteRoute,
+  } as any)
+const Char123LangChar125BlogSlugRoute =
+  Char123LangChar125BlogSlugRouteImport.update({
+    id: '/blog/$slug',
+    path: '/blog/$slug',
+    getParentRoute: () => Char123LangChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/$lang': typeof LangRouteRouteWithChildren
-  '/$lang/': typeof LangIndexRoute
-  '/$lang/blog/$slug': typeof LangBlogSlugRoute
-  '/$lang/category/$category': typeof LangCategoryCategoryRoute
-  '/$lang/blog/': typeof LangBlogIndexRoute
-  '/$lang/faq/': typeof LangFaqIndexRoute
+  '/{-$lang}': typeof Char123LangChar125RouteRouteWithChildren
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog/$slug': typeof Char123LangChar125BlogSlugRoute
+  '/{-$lang}/category/$category': typeof Char123LangChar125CategoryCategoryRoute
+  '/{-$lang}/blog/': typeof Char123LangChar125BlogIndexRoute
+  '/{-$lang}/faq/': typeof Char123LangChar125FaqIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/$lang': typeof LangIndexRoute
-  '/$lang/blog/$slug': typeof LangBlogSlugRoute
-  '/$lang/category/$category': typeof LangCategoryCategoryRoute
-  '/$lang/blog': typeof LangBlogIndexRoute
-  '/$lang/faq': typeof LangFaqIndexRoute
+  '/{-$lang}': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog/$slug': typeof Char123LangChar125BlogSlugRoute
+  '/{-$lang}/category/$category': typeof Char123LangChar125CategoryCategoryRoute
+  '/{-$lang}/blog': typeof Char123LangChar125BlogIndexRoute
+  '/{-$lang}/faq': typeof Char123LangChar125FaqIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/$lang': typeof LangRouteRouteWithChildren
-  '/$lang/': typeof LangIndexRoute
-  '/$lang/blog/$slug': typeof LangBlogSlugRoute
-  '/$lang/category/$category': typeof LangCategoryCategoryRoute
-  '/$lang/blog/': typeof LangBlogIndexRoute
-  '/$lang/faq/': typeof LangFaqIndexRoute
+  '/{-$lang}': typeof Char123LangChar125RouteRouteWithChildren
+  '/{-$lang}/': typeof Char123LangChar125IndexRoute
+  '/{-$lang}/blog/$slug': typeof Char123LangChar125BlogSlugRoute
+  '/{-$lang}/category/$category': typeof Char123LangChar125CategoryCategoryRoute
+  '/{-$lang}/blog/': typeof Char123LangChar125BlogIndexRoute
+  '/{-$lang}/faq/': typeof Char123LangChar125FaqIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/$lang'
-    | '/$lang/'
-    | '/$lang/blog/$slug'
-    | '/$lang/category/$category'
-    | '/$lang/blog/'
-    | '/$lang/faq/'
+    | '/{-$lang}'
+    | '/{-$lang}/'
+    | '/{-$lang}/blog/$slug'
+    | '/{-$lang}/category/$category'
+    | '/{-$lang}/blog/'
+    | '/{-$lang}/faq/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/$lang'
-    | '/$lang/blog/$slug'
-    | '/$lang/category/$category'
-    | '/$lang/blog'
-    | '/$lang/faq'
+    | '/{-$lang}'
+    | '/{-$lang}/blog/$slug'
+    | '/{-$lang}/category/$category'
+    | '/{-$lang}/blog'
+    | '/{-$lang}/faq'
   id:
     | '__root__'
-    | '/'
-    | '/$lang'
-    | '/$lang/'
-    | '/$lang/blog/$slug'
-    | '/$lang/category/$category'
-    | '/$lang/blog/'
-    | '/$lang/faq/'
+    | '/{-$lang}'
+    | '/{-$lang}/'
+    | '/{-$lang}/blog/$slug'
+    | '/{-$lang}/category/$category'
+    | '/{-$lang}/blog/'
+    | '/{-$lang}/faq/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  LangRouteRoute: typeof LangRouteRouteWithChildren
+  Char123LangChar125RouteRoute: typeof Char123LangChar125RouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/$lang': {
-      id: '/$lang'
-      path: '/$lang'
-      fullPath: '/$lang'
-      preLoaderRoute: typeof LangRouteRouteImport
+    '/{-$lang}': {
+      id: '/{-$lang}'
+      path: '/{-$lang}'
+      fullPath: '/{-$lang}'
+      preLoaderRoute: typeof Char123LangChar125RouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
+    '/{-$lang}/': {
+      id: '/{-$lang}/'
       path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+      fullPath: '/{-$lang}/'
+      preLoaderRoute: typeof Char123LangChar125IndexRouteImport
+      parentRoute: typeof Char123LangChar125RouteRoute
     }
-    '/$lang/': {
-      id: '/$lang/'
-      path: '/'
-      fullPath: '/$lang/'
-      preLoaderRoute: typeof LangIndexRouteImport
-      parentRoute: typeof LangRouteRoute
-    }
-    '/$lang/faq/': {
-      id: '/$lang/faq/'
+    '/{-$lang}/faq/': {
+      id: '/{-$lang}/faq/'
       path: '/faq'
-      fullPath: '/$lang/faq/'
-      preLoaderRoute: typeof LangFaqIndexRouteImport
-      parentRoute: typeof LangRouteRoute
+      fullPath: '/{-$lang}/faq/'
+      preLoaderRoute: typeof Char123LangChar125FaqIndexRouteImport
+      parentRoute: typeof Char123LangChar125RouteRoute
     }
-    '/$lang/blog/': {
-      id: '/$lang/blog/'
+    '/{-$lang}/blog/': {
+      id: '/{-$lang}/blog/'
       path: '/blog'
-      fullPath: '/$lang/blog/'
-      preLoaderRoute: typeof LangBlogIndexRouteImport
-      parentRoute: typeof LangRouteRoute
+      fullPath: '/{-$lang}/blog/'
+      preLoaderRoute: typeof Char123LangChar125BlogIndexRouteImport
+      parentRoute: typeof Char123LangChar125RouteRoute
     }
-    '/$lang/category/$category': {
-      id: '/$lang/category/$category'
+    '/{-$lang}/category/$category': {
+      id: '/{-$lang}/category/$category'
       path: '/category/$category'
-      fullPath: '/$lang/category/$category'
-      preLoaderRoute: typeof LangCategoryCategoryRouteImport
-      parentRoute: typeof LangRouteRoute
+      fullPath: '/{-$lang}/category/$category'
+      preLoaderRoute: typeof Char123LangChar125CategoryCategoryRouteImport
+      parentRoute: typeof Char123LangChar125RouteRoute
     }
-    '/$lang/blog/$slug': {
-      id: '/$lang/blog/$slug'
+    '/{-$lang}/blog/$slug': {
+      id: '/{-$lang}/blog/$slug'
       path: '/blog/$slug'
-      fullPath: '/$lang/blog/$slug'
-      preLoaderRoute: typeof LangBlogSlugRouteImport
-      parentRoute: typeof LangRouteRoute
+      fullPath: '/{-$lang}/blog/$slug'
+      preLoaderRoute: typeof Char123LangChar125BlogSlugRouteImport
+      parentRoute: typeof Char123LangChar125RouteRoute
     }
   }
 }
 
-interface LangRouteRouteChildren {
-  LangIndexRoute: typeof LangIndexRoute
-  LangBlogSlugRoute: typeof LangBlogSlugRoute
-  LangCategoryCategoryRoute: typeof LangCategoryCategoryRoute
-  LangBlogIndexRoute: typeof LangBlogIndexRoute
-  LangFaqIndexRoute: typeof LangFaqIndexRoute
+interface Char123LangChar125RouteRouteChildren {
+  Char123LangChar125IndexRoute: typeof Char123LangChar125IndexRoute
+  Char123LangChar125BlogSlugRoute: typeof Char123LangChar125BlogSlugRoute
+  Char123LangChar125CategoryCategoryRoute: typeof Char123LangChar125CategoryCategoryRoute
+  Char123LangChar125BlogIndexRoute: typeof Char123LangChar125BlogIndexRoute
+  Char123LangChar125FaqIndexRoute: typeof Char123LangChar125FaqIndexRoute
 }
 
-const LangRouteRouteChildren: LangRouteRouteChildren = {
-  LangIndexRoute: LangIndexRoute,
-  LangBlogSlugRoute: LangBlogSlugRoute,
-  LangCategoryCategoryRoute: LangCategoryCategoryRoute,
-  LangBlogIndexRoute: LangBlogIndexRoute,
-  LangFaqIndexRoute: LangFaqIndexRoute,
-}
+const Char123LangChar125RouteRouteChildren: Char123LangChar125RouteRouteChildren =
+  {
+    Char123LangChar125IndexRoute: Char123LangChar125IndexRoute,
+    Char123LangChar125BlogSlugRoute: Char123LangChar125BlogSlugRoute,
+    Char123LangChar125CategoryCategoryRoute:
+      Char123LangChar125CategoryCategoryRoute,
+    Char123LangChar125BlogIndexRoute: Char123LangChar125BlogIndexRoute,
+    Char123LangChar125FaqIndexRoute: Char123LangChar125FaqIndexRoute,
+  }
 
-const LangRouteRouteWithChildren = LangRouteRoute._addFileChildren(
-  LangRouteRouteChildren,
-)
+const Char123LangChar125RouteRouteWithChildren =
+  Char123LangChar125RouteRoute._addFileChildren(
+    Char123LangChar125RouteRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  LangRouteRoute: LangRouteRouteWithChildren,
+  Char123LangChar125RouteRoute: Char123LangChar125RouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

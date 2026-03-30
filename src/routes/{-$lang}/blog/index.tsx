@@ -5,10 +5,11 @@ import { SITE_URL } from '../../../data/site'
 import { SUPPORTED_LANGUAGES } from '../../../data/languages'
 import Breadcrumb from '../../../components/Breadcrumb'
 
-export const Route = createFileRoute('/$lang/blog/')(  {
+export const Route = createFileRoute('/{-$lang}/blog/')(  {
   head: ({ params }) => {
-    const strings = t(params.lang)
-    const pageUrl = `${SITE_URL}/${params.lang}/blog/`
+    const defaultLang = params.lang || 'en'
+    const strings = t(defaultLang)
+    const pageUrl = defaultLang === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${defaultLang}/blog/`
 
     return {
       meta: [
@@ -25,9 +26,9 @@ export const Route = createFileRoute('/$lang/blog/')(  {
         ...SUPPORTED_LANGUAGES.map((lang) => ({
           rel: 'alternate',
           hrefLang: lang.hreflang,
-          href: `${SITE_URL}/${lang.code}/blog/`,
+          href: lang.code === 'en' ? `${SITE_URL}/blog/` : `${SITE_URL}/${lang.code}/blog/`,
         })),
-        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/en/blog/` },
+        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/blog/` },
       ],
       scripts: [
         {
@@ -40,7 +41,7 @@ export const Route = createFileRoute('/$lang/blog/')(  {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: `${SITE_URL}/${params.lang}/`,
+                item: defaultLang === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${defaultLang}/`,
               },
               {
                 '@type': 'ListItem',
@@ -58,7 +59,7 @@ export const Route = createFileRoute('/$lang/blog/')(  {
 })
 
 function BlogListPage() {
-  const { lang } = Route.useParams()
+  const { lang = 'en' } = Route.useParams()
   const strings = t(lang)
   const posts = getBlogPosts(lang)
 
@@ -79,8 +80,8 @@ function BlogListPage() {
         {posts.map((post) => (
           <Link
             key={post.slug}
-            to="/$lang/blog/$slug"
-            params={{ lang, slug: post.slug }}
+            to="/{-$lang}/blog/$slug"
+            params={{ lang: lang === 'en' ? undefined : lang, slug: post.slug }}
             className="blog-card"
           >
             <div className="flex flex-col gap-2">

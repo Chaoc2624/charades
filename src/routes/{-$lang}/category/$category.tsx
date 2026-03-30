@@ -138,21 +138,22 @@ const categoryDescriptions: Record<string, Record<string, string>> = {
   },
 }
 
-export const Route = createFileRoute('/$lang/category/$category')({
+export const Route = createFileRoute('/{-$lang}/category/$category')({
   beforeLoad: ({ params }) => {
     if (!isValidCategory(params.category)) {
-      throw redirect({ to: '/$lang', params: { lang: params.lang } })
+      throw redirect({ to: '/{-$lang}', params: { lang: params.lang === 'en' ? undefined : params.lang } })
     }
   },
   head: ({ params }) => {
-    const strings = t(params.lang)
+    const defaultLang = params.lang || 'en'
+    const strings = t(defaultLang)
     const categoryName = strings[params.category as keyof typeof strings] || params.category
     const title = `${categoryName} Charades Words — ${strings.siteTitle}`
-    const description = categoryDescriptions[params.lang]?.[params.category]
+    const description = categoryDescriptions[defaultLang]?.[params.category]
       || categoryDescriptions.en[params.category]
       || strings.siteDescription
-    const pageUrl = `${SITE_URL}/${params.lang}/category/${params.category}/`
-    const faqs = getCategoryFAQs(params.lang, params.category)
+    const pageUrl = defaultLang === 'en' ? `${SITE_URL}/category/${params.category}/` : `${SITE_URL}/${defaultLang}/category/${params.category}/`
+    const faqs = getCategoryFAQs(defaultLang, params.category)
 
     return {
       meta: [
@@ -170,8 +171,9 @@ export const Route = createFileRoute('/$lang/category/$category')({
         ...SUPPORTED_LANGUAGES.map((lang) => ({
           rel: 'alternate',
           hrefLang: lang.hreflang,
-          href: `${SITE_URL}/${lang.code}/category/${params.category}/`,
+          href: lang.code === 'en' ? `${SITE_URL}/category/${params.category}/` : `${SITE_URL}/${lang.code}/category/${params.category}/`,
         })),
+        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/category/${params.category}/` },
       ],
       scripts: [
         ...(faqs.length > 0
@@ -217,14 +219,14 @@ export const Route = createFileRoute('/$lang/category/$category')({
       ],
     }
   },
-  validateSearch: (search: Record<string, unknown>) => ({
+  validateSearch: (search: Record<string, unknown>): { audience?: Audience } => ({
     audience: (search.audience as Audience) || undefined,
   }),
   component: CategoryPage,
 })
 
 function CategoryPage() {
-  const { lang, category } = Route.useParams()
+  const { lang = 'en', category } = Route.useParams()
   const { audience } = Route.useSearch()
   const strings = t(lang)
   const catKey = category === 'tv-shows' ? 'tvShows' : category
@@ -239,7 +241,7 @@ function CategoryPage() {
     <div className="flex flex-col gap-12 w-full max-w-2xl mx-auto animate-float-in">
       <Breadcrumb
         items={[
-          { label: strings.categories, href: `/${lang}` },
+          { label: strings.categories, href: lang === 'en' ? '/' : `/${lang}` },
           { label: categoryName as string },
         ]}
       />
@@ -327,8 +329,8 @@ function CategoryPage() {
             return (
               <Link
                 key={cat}
-                to="/$lang/category/$category"
-                params={{ lang, category: cat }}
+                to="/{-$lang}/category/$category"
+                params={{ lang: lang === 'en' ? undefined : lang, category: cat }}
                 className="category-card"
               >
                 <span className="flex items-center justify-center" style={{ width: '28px', height: '28px' }}>{categoryIcons[cat]}</span>

@@ -3,14 +3,16 @@ import { isValidLang } from '../../data/languages'
 import { t } from '../../data/i18n'
 import LanguageSwitcher from '../../components/LanguageSwitcher'
 
-export const Route = createFileRoute('/$lang')({
+export const Route = createFileRoute('/{-$lang}')({
   beforeLoad: ({ params }) => {
-    if (!isValidLang(params.lang)) {
-      throw redirect({ to: '/$lang', params: { lang: 'en' } })
+    const lang = params.lang || 'en'
+    if (!isValidLang(lang)) {
+      throw redirect({ to: '/{-$lang}', params: { lang: undefined } })
     }
   },
   head: ({ params }) => {
-    const strings = t(params.lang)
+    const lang = params.lang || 'en'
+    const strings = t(lang)
     return {
       meta: [
         { title: `${strings.siteTitle} — ${strings.siteDescription.split('.')[0]}` },
@@ -29,7 +31,7 @@ export const Route = createFileRoute('/$lang')({
 })
 
 function LangLayout() {
-  const { lang } = Route.useParams()
+  const { lang = 'en' } = Route.useParams()
   const strings = t(lang)
 
   return (
@@ -37,7 +39,7 @@ function LangLayout() {
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-4 md:px-8 sticky top-0 z-20" style={{ background: 'rgba(246, 244, 240, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', borderBottom: '1px solid var(--color-border)' }}>
         <div className="flex items-center gap-6">
-          <a href={`/${lang}`} className="flex items-center gap-2.5 no-underline">
+          <a href={lang === 'en' ? '/' : `/${lang}`} className="flex items-center gap-2.5 no-underline">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5.5 3C3.5 3 2 5 2 8c0 3.5 2 6 5.5 6S12 11.5 12 8c0-3-1.5-5-3.5-5h-3z" />
               <circle cx="6.5" cy="8.5" r="0.5" fill="var(--color-primary)" />
@@ -53,9 +55,9 @@ function LangLayout() {
             </span>
           </a>
           <nav className="hidden md:flex items-center gap-4">
-            <Link to="/$lang" params={{ lang }} className="nav-link">{strings.home}</Link>
-            <Link to="/$lang/faq" params={{ lang }} className="nav-link">{strings.faq}</Link>
-            <Link to="/$lang/blog" params={{ lang }} className="nav-link">{strings.blog}</Link>
+            <Link to="/{-$lang}" params={{ lang: lang === 'en' ? undefined : lang }} className="nav-link">{strings.home}</Link>
+            <Link to="/{-$lang}/faq" params={{ lang: lang === 'en' ? undefined : lang }} className="nav-link">{strings.faq}</Link>
+            <Link to="/{-$lang}/blog" params={{ lang: lang === 'en' ? undefined : lang }} className="nav-link">{strings.blog}</Link>
           </nav>
         </div>
         <LanguageSwitcher />
@@ -93,18 +95,18 @@ function LangLayout() {
             <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>
               Links
             </span>
-            <Link to="/$lang" params={{ lang }} className="footer-link">{strings.home}</Link>
-            <Link to="/$lang/faq" params={{ lang }} className="footer-link">{strings.faq}</Link>
-            <Link to="/$lang/blog" params={{ lang }} className="footer-link">{strings.blog}</Link>
+            <Link to="/{-$lang}" params={{ lang: lang === 'en' ? undefined : lang }} className="footer-link">{strings.home}</Link>
+            <Link to="/{-$lang}/faq" params={{ lang: lang === 'en' ? undefined : lang }} className="footer-link">{strings.faq}</Link>
+            <Link to="/{-$lang}/blog" params={{ lang: lang === 'en' ? undefined : lang }} className="footer-link">{strings.blog}</Link>
           </div>
           {/* Categories */}
           <div className="flex flex-col gap-2">
             <span className="text-xs font-bold uppercase tracking-wider" style={{ color: 'var(--color-text-muted)' }}>
               {strings.categories}
             </span>
-            <Link to="/$lang/category/$category" params={{ lang, category: 'animals' }} className="footer-link">{strings.animals}</Link>
-            <Link to="/$lang/category/$category" params={{ lang, category: 'food' }} className="footer-link">{strings.food}</Link>
-            <Link to="/$lang/category/$category" params={{ lang, category: 'occupations' }} className="footer-link">{strings.occupations}</Link>
+            <Link to="/{-$lang}/category/$category" params={{ lang: lang === 'en' ? undefined : lang, category: 'animals' }} className="footer-link">{strings.animals}</Link>
+            <Link to="/{-$lang}/category/$category" params={{ lang: lang === 'en' ? undefined : lang, category: 'food' }} className="footer-link">{strings.food}</Link>
+            <Link to="/{-$lang}/category/$category" params={{ lang: lang === 'en' ? undefined : lang, category: 'occupations' }} className="footer-link">{strings.occupations}</Link>
           </div>
         </div>
         <div className="max-w-2xl mx-auto mt-6 pt-4 border-t text-center" style={{ borderColor: 'var(--color-border)' }}>

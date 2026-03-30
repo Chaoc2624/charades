@@ -91,11 +91,12 @@ function getGestures(lang: string): Gesture[] {
   return gestureData[lang] || gestureData.en
 }
 
-export const Route = createFileRoute('/$lang/faq/')(  {
+export const Route = createFileRoute('/{-$lang}/faq/')(  {
   head: ({ params }) => {
-    const strings = t(params.lang)
-    const pageUrl = `${SITE_URL}/${params.lang}/faq/`
-    const faqs = getFAQs(params.lang)
+    const defaultLang = params.lang || 'en'
+    const strings = t(defaultLang)
+    const pageUrl = defaultLang === 'en' ? `${SITE_URL}/faq/` : `${SITE_URL}/${defaultLang}/faq/`
+    const faqs = getFAQs(defaultLang)
 
     return {
       meta: [
@@ -112,9 +113,9 @@ export const Route = createFileRoute('/$lang/faq/')(  {
         ...SUPPORTED_LANGUAGES.map((lang) => ({
           rel: 'alternate',
           hrefLang: lang.hreflang,
-          href: `${SITE_URL}/${lang.code}/faq/`,
+          href: lang.code === 'en' ? `${SITE_URL}/faq/` : `${SITE_URL}/${lang.code}/faq/`,
         })),
-        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/en/faq/` },
+        { rel: 'alternate', hrefLang: 'x-default', href: `${SITE_URL}/faq/` },
       ],
       scripts: [
         {
@@ -142,7 +143,7 @@ export const Route = createFileRoute('/$lang/faq/')(  {
                 '@type': 'ListItem',
                 position: 1,
                 name: 'Home',
-                item: `${SITE_URL}/${params.lang}/`,
+                item: defaultLang === 'en' ? `${SITE_URL}/` : `${SITE_URL}/${defaultLang}/`,
               },
               {
                 '@type': 'ListItem',
@@ -160,7 +161,7 @@ export const Route = createFileRoute('/$lang/faq/')(  {
 })
 
 function FAQPage() {
-  const { lang } = Route.useParams()
+  const { lang = 'en' } = Route.useParams()
   const strings = t(lang)
   const faqs = getFAQs(lang)
 
